@@ -13,6 +13,85 @@
            Upon submitting the form, you should simply print the Value of the Form to the Console.
            Optionally, display it in your template.
       -->
+      <form #signupForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Mail</label>
+          <input 
+            type="email"
+            id="email"
+            ngModel
+            name="email"
+            required
+            email
+            class="form-control"
+            #email="ngModel">
+          <span 
+            class="help-block"
+            *ngIf="!email.valid && email.touched">Please enter a valid email!
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="subscription">Choose a Subscription</label>
+          <select
+            name="subscription"
+            id="subscription"
+            [ngModel]="'basic'"
+            class="form-control">
+            <!--
+            ANOTHER OPTION
+            [ngModel]="'selectedSubscription'"
+            -->
+            <option value="basic">Basic</option>
+            <option value="advanced">Advanced</option>
+            <option value="pro">Pro</option>
+          </select>
+          <!--
+          ANOTHER OPTION
+          <select 
+            name="subscription" 
+            id="subscription"
+            [ngModel]="selectedSubscription"
+            class="form-control">
+            <option 
+              *ngFor="let subscription og subscriptions"  
+              [value]="subscription">{{ subscription }}
+            </option>
+          </select>
+          -->
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            name="password" 
+            id="password"
+            ngModel
+            required
+            class="form-control"
+            #password="ngModel">
+          <span 
+            class="help-block"
+            *ngIf="!password.valid && password.touched">Please enter a valid password!
+          </span>
+        </div>
+        <button 
+          class="btn btn-success" 
+          type="submit">Submit
+        </button>
+        <p 
+          class="help-block" 
+          *ngIf="!signupForm.valid && signupForm.touched">The form is invalid!</p>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="submitted">
+    <div class="col-xs-12">
+      <h4>Your Data!</h4>
+      <p>Mail: {{ user.email }}</p>
+      <p>Subscription: {{ user.subscription }}</p>
+      <p>Your Password is: {{ user.password }}</p>
     </div>
   </div>
 </div>
+
