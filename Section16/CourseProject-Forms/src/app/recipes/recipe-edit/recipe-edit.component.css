@@ -1,0 +1,16 @@
+.title-name {
+  margin-top: 10px;
+}
+
+.ingredients { 
+  margin-top: 10px;
+}
+
+.btn {
+  margin-right: 15px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid #af1111;
+}
